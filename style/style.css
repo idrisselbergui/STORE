@@ -1,0 +1,28 @@
+.container{
+    display: flex;
+    height: 100vh;
+    width: 100vW;
+}
+.dv_left{
+    display: flex;
+    justify-content: center;
+    width: 50%;
+    background-color: aqua;
+}
+.container h2{
+
+}
+
+.item{
+    height: 100px;
+    width: 100px;
+    background-image: url("images/cafe.jpg");
+    
+}
+.dv_right{
+    display: flex;
+}
+.dv_down{
+    display: flex;
+    flex-direction: column;
+}
