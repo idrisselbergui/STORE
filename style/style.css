@@ -5,9 +5,10 @@
 }
 .dv_left{
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
     width: 50%;
-    background-color: aqua;
 }
 .container h2{
 
@@ -20,9 +21,35 @@
     
 }
 .dv_right{
+    width: 50%;
+    flex-direction: column;
+    padding-top: 20px;
     display: flex;
 }
 .dv_down{
     display: flex;
     flex-direction: column;
 }
+.shearch_bar{
+    height: 40px;
+    width: 200px;
+    border: 1px solid ;
+    border-radius: 5px;
+}
+.dvtop div{
+    display: flex;
+    justify-content: center;
+    align-items: center ;
+}
+tr{
+    gap: auto;
+    width: 100%;
+    justify-content: center;
+    
+}
+table{
+    width: 100%;
+
+}
+
+    
