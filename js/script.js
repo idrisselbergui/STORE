@@ -1,5 +1,7 @@
  let items_holder=document.getElementById("items");
- let table_header=' <caption>Orders in progress</caption><tr><td>Order</td><td>Qte</td><td>Prix</td> <td>Total</td> <td>Prix total</td></tr>' ;
+ let table_header=' <caption>Orders in progress</caption><tr><td>Order</td><td>Qte</td><td>Prix</td> <td>Total</td> </tr>' ;
+ let total_prix=document.getElementById("total_prix");
+let total=0;
  let items=[
    {
       nom:"tea",
@@ -59,6 +61,7 @@
     
 
  }
+ 
 function place_order(identifient){
 
    var itm;
@@ -70,9 +73,10 @@ function place_order(identifient){
    })
   
 
-   const new_item_to_add = [itm.nom,1,itm.prix];
+   const new_item_to_add = [itm.nom,1,itm.prix,itm.prix];
    if(orders.length==0){
       orders.push(new_item_to_add);
+      total+=new_item_to_add[3]/1 ;
    }
    else{
       let etat=false;
@@ -80,17 +84,24 @@ function place_order(identifient){
          
          if(x[0]===new_item_to_add[0]){
             x[1]=Number(x[1])+1;
+            x[3]=x[1]*x[2]
             
+            total+=x[3]/1 ;
             etat=true;
          }
          
       })
-      if(!etat){ orders.push(new_item_to_add);}
+      if(!etat){ 
+         orders.push(new_item_to_add);
+         total+=new_item_to_add[3]/1;
+      }
       
         
       
       
       }
+      total_prix.innerHTML=total;
+      console.log(total)
       let my_table=document.getElementById("my_table")
       let table_data=document.getElementsByClassName("table_child")
       my_table.innerHTML=table_header;
@@ -98,6 +109,7 @@ function place_order(identifient){
 
       let new_row=document.createElement("tr")
       new_row.setAttribute("class","table_child")
+      new_row.setAttribute("id",el[0]+"row")
       el.forEach((info)=>{
          let td=document.createElement("td")
          td.textContent=info;

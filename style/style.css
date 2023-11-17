@@ -71,3 +71,13 @@ table{
 img{
     border-radius: 10px 0px;
 }
+.prix_total{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    
+}
+#total_prix{
+padding-right:40px ;
+
+}
