@@ -61,7 +61,6 @@
  }
 function place_order(identifient){
 
-   console.log(identifient);
    var itm;
    items.forEach((item)=>{
       if( item.nom===identifient.id){
@@ -74,27 +73,26 @@ function place_order(identifient){
    const new_item_to_add = [itm.nom,1,itm.prix];
    if(orders.length==0){
       orders.push(new_item_to_add);
-      console.log("trueeeeee")
    }
    else{
+      let etat=false;
       orders.forEach((x)=>{
-         console.log("ff")
          
          if(x[0]===new_item_to_add[0]){
             x[1]=Number(x[1])+1;
             
-            console.log("true")
-         }else{
-            console.log("false")
-         orders.push(new_item_to_add);
+            etat=true;
          }
          
       })
+      if(!etat){ orders.push(new_item_to_add);}
+      
+        
+      
+      
       }
-      console.log(orders)
       let my_table=document.getElementById("my_table")
       let table_data=document.getElementsByClassName("table_child")
-      console.log(table_data);
       my_table.innerHTML=table_header;
       orders.forEach((el)=>{
 
@@ -103,7 +101,6 @@ function place_order(identifient){
       el.forEach((info)=>{
          let td=document.createElement("td")
          td.textContent=info;
-         console.log(info)
          new_row.appendChild(td);
       })
       my_table.appendChild(new_row)
