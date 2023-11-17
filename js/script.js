@@ -27,7 +27,7 @@
       prix:"50"
    },
    {
-      nom:"Tajine",
+      nom:"Tajine2",
       image:"images/cafe.jpg",
       prix:"50"
    }
@@ -43,10 +43,10 @@
       let image=document.createElement("img");
       image.setAttribute("width","140px");
       image.setAttribute("height","120px");
-      image.setAttribute("id",item.nom);
       image.setAttribute("src",item.image);
       let info_holder=document.createElement("div");
-      info_holder.setAttribute("onclick","place_order()")
+      info_holder.setAttribute("onclick",`place_order(${item.nom})`)
+      info_holder.setAttribute("id",item.nom)
       let item_name=document.createElement("h3");
       item_name.textContent=item.nom+"  "+item.prix+" dh";
       info_holder.classList="infoholder";
@@ -58,7 +58,19 @@
     
 
  }
-   function place_order(){
+   function place_order(identifient){
+
+      console.log(identifient);
+      var itm;
+      items.forEach((item)=>{
+         if( item.nom===identifient.id){
+            itm=item;
+         }
+         
+      })
+      console.log(itm)
+      
+      const new_item_to_add = [itm];
       let my_table=document.getElementById("my_table")
       orders.forEach((element)=>{
          let new_order=document.createElement("tr")
