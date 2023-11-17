@@ -1,8 +1,9 @@
  let items_holder=document.getElementById("items");
+ let table_header=' <caption>Orders in progress</caption><tr><td>Order</td><td>Qte</td><td>Prix</td> <td>Total</td> <td>Prix total</td></tr>' ;
  let items=[
    {
       nom:"tea",
-      image:"images/cafe.jpg",
+      image:"images/tea.jpg",
       prix:"10"
    },
    {
@@ -12,24 +13,24 @@
       
    },
    {
-      nom:"Piza",
-      image:"images/cafe.jpg",
+      nom:"Pizza",
+      image:"images/pizza.jpg",
       prix:"30"
    },
    {
       nom:"cafe",
-      image:"images/cafe.jpg",
+      image:"images/cafe2.jpg",
       prix:"10"
    },
    {
-      nom:"Tajine",
-      image:"images/cafe.jpg",
+      nom:"taggine",
+      image:"images/taggin2.jpg",
       prix:"50"
    },
    {
-      nom:"Tajine2",
-      image:"images/cafe.jpg",
-      prix:"50"
+      nom:"G_taggine",
+      image:"images/taggine.jpg",
+      prix:"80"
    }
     
  ]
@@ -58,33 +59,58 @@
     
 
  }
-   function place_order(identifient){
+function place_order(identifient){
 
-      console.log(identifient);
-      var itm;
-      items.forEach((item)=>{
-         if( item.nom===identifient.id){
-            itm=item;
+   console.log(identifient);
+   var itm;
+   items.forEach((item)=>{
+      if( item.nom===identifient.id){
+         itm=item;
+      }
+      
+   })
+  
+
+   const new_item_to_add = [itm.nom,1,itm.prix];
+   if(orders.length==0){
+      orders.push(new_item_to_add);
+      console.log("trueeeeee")
+   }
+   else{
+      orders.forEach((x)=>{
+         console.log("ff")
+         
+         if(x[0]===new_item_to_add[0]){
+            x[1]=Number(x[1])+1;
+            
+            console.log("true")
+         }else{
+            console.log("false")
+         orders.push(new_item_to_add);
          }
          
       })
-      console.log(itm)
-      
-      const new_item_to_add = [itm];
+      }
+      console.log(orders)
       let my_table=document.getElementById("my_table")
-      orders.forEach((element)=>{
-         let new_order=document.createElement("tr")
-         element.forEach((info)=>{
-            let td=document.createElement("td")
-            td.textContent=info;
-            console.log(info)
-            new_order.appendChild(tr);
-         })
-         my_table.appendChild(new_order)
+      let table_data=document.getElementsByClassName("table_child")
+      console.log(table_data);
+      my_table.innerHTML=table_header;
+      orders.forEach((el)=>{
 
+      let new_row=document.createElement("tr")
+      new_row.setAttribute("class","table_child")
+      el.forEach((info)=>{
+         let td=document.createElement("td")
+         td.textContent=info;
+         console.log(info)
+         new_row.appendChild(td);
       })
-      
-      
-      
+      my_table.appendChild(new_row)
+
+   })
+   
+   
+   
    
 } 
