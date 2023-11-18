@@ -41,11 +41,11 @@
 tr{
     gap: auto;
     width: 100%;
-    justify-content: center;
+    justify-content: left;
     
 }
 table{
-    width: 100%;
+    width: 80%;
 
 }
 
