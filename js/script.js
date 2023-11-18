@@ -41,8 +41,21 @@ let total=0;
 
  ]
  load_image();
+
+ function shearch(){
+   let inpu =document.getElementById("shearch_bar").value;
+   load_image(inpu)
+ }
  function load_image(a){
-   items.forEach((item)=>{
+   items_holder.innerHTML="";
+   let cheker;
+   if(a){
+      let shearch=items.filter((item)=>{
+         return item.nom.includes(a);
+      })
+      cheker=shearch;
+   }else{cheker=items}
+   cheker.forEach((item)=>{
       let image=document.createElement("img");
       image.setAttribute("width","140px");
       image.setAttribute("height","120px");
@@ -89,50 +102,55 @@ function place_order(identifient){
 } 
 
 
-   function table_implientation(){
-      let my_table=document.getElementById("my_table")
-      let table_data=document.getElementsByClassName("table_child")
-      my_table.innerHTML=table_header;
-      orders.forEach((el)=>{
-         let new_row=document.createElement("tr")
-         new_row.setAttribute("class","table_child")
-         new_row.setAttribute("id",el[0]+"row")
-         el.forEach((info)=>{
-            let td=document.createElement("td")
-            td.textContent=info;
-            new_row.appendChild(td);
-        })
-        //  button to delete item
-        let td=document.createElement("td")
-        td.textContent="X";
-        td.setAttribute("onclick","delete_row(\""+el[0]+"\")")
-        new_row.appendChild(td);
-        console.log(el[0])
-        
-      my_table.appendChild(new_row)
 
+function table_implientation(){
+   let my_table=document.getElementById("my_table")
+   let table_data=document.getElementsByClassName("table_child")
+   my_table.innerHTML=table_header;
+   orders.forEach((el)=>{
+      let new_row=document.createElement("tr")
+      new_row.setAttribute("class","table_child")
+      new_row.setAttribute("id",el[0]+"row")
+      el.forEach((info)=>{
+         let td=document.createElement("td")
+         td.textContent=info;
+         new_row.appendChild(td);
       })
-      total_prix.innerHTML=total;
-   }
-   function delete_row(x){
-      console.log(x)
-      orders.forEach((order)=>{
-         if(order[0]===x){
-            if( order[1]>1){
+      //  button to delete item
+      let td=document.createElement("td")
+      td.textContent="X";
+      td.setAttribute("onclick","delete_row(\""+el[0]+"\")")
+      td.classList.add("delete")
+      new_row.appendChild(td);
+      console.log(el[0])
+      
+   my_table.appendChild(new_row)
 
-            order[1]=Number(order[1])-1;
-            order[3]=order[1]*order[2]
-            total-=order[2]/1 ;
-           
-           
-            }
-            else{
-               total-=order[2]/1 ;
-                orders.splice(orders.indexOf(order),1)
-            }
-            table_implientation();
+   })
+   total_prix.innerHTML=total;
+}
+
+
+
+function delete_row(x){
+   console.log(x)
+   orders.forEach((order)=>{
+      if(order[0]===x){
+         if( order[1]>1){
+
+         order[1]=Number(order[1])-1;
+         order[3]=order[1]*order[2]
+         total-=order[2]/1 ;
+         
+         
          }
+         else{
+            total-=order[2]/1 ;
+               orders.splice(orders.indexOf(order),1)
+         }
+         table_implientation();
+      }
 
-      })
+   })
 
-   }
+}
