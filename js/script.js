@@ -44,8 +44,12 @@ let total=0;
 
  function shearch(){
    let inpu =document.getElementById("shearch_bar").value;
+   console.log(document.getElementById("shearch_bar").value)
+   console.log(typeof(inpu))
    load_image(inpu)
  }
+
+ 
  function load_image(a){
    items_holder.innerHTML="";
    let cheker;

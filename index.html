@@ -14,7 +14,7 @@
                 <div class="dvtop">
                     <h2>Orders</h2>
                     <div>
-                        <input type="text" class="shearch_bar" id="shearch_bar" onkeypress="shearch()" placeholder="search for an item">
+                        <input type="text" class="shearch_bar" id="shearch_bar" onkeyup="shearch()" placeholder="search for an item">
                         <img src="images/cafe.jpg" alt="" height="40px" width="40px">                    
                      </div>
                 </div>
@@ -26,7 +26,17 @@
 
             </div>
             <div class="dv_right">
+                
                 <div class="dvtop">
+                  
+                    <div class="print_holder">
+                        <button onclick="Payer()">Payment </button>
+                        <button onclick="print()">Print </button>
+                    </div>
+                    
+                </div>
+               
+                <div class="dv_down">
                     <table id="my_table">
                         <caption>Orders in progress</caption>
                         
@@ -39,15 +49,10 @@
                             
                         </tr>
                     </table>
-                    
-                    
-                    
-                </div><div class="prix_total">
+                    <div class="prix_total">
                         <p>Prix Total</p>
                         <p id="total_prix"> </p>
-                    </div>
-                <div class="dv_down">
-
+                </div>
                 </div>
 
 
