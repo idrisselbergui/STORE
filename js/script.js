@@ -87,7 +87,7 @@ function place_order(identifient){
          itm=item;
       }
    })
-   const new_item_to_add = [itm.nom,1,itm.prix,itm.prix];
+   const new_item_to_add = [itm.nom,1,itm.prix,Number(itm.prix)];
    let etat=false;
    orders.forEach((x)=>{
          if(x[0]===new_item_to_add[0]){
@@ -158,3 +158,30 @@ function delete_row(x){
    })
 
 }
+
+
+function Payyer(){
+  document.getElementById("Recu").style.display="block";
+
+   var recu=document.getElementById("recu_contenu")
+   recu.innerHTML=""
+   let i=0;
+   let table=document.createElement("table")
+
+   orders.forEach(order=>{
+      let tr=document.createElement("tr")
+      order.forEach(item=>{
+         let td=document.createElement("td")
+         td.textContent=item
+      tr.appendChild(td)
+         
+      })
+      table.appendChild(tr)
+      recu.appendChild(table)
+   })
+}
+
+//function print(){
+//   document.getElementById("Recu").style.display="block";
+//   print();
+//}

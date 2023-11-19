@@ -44,7 +44,7 @@ tr{
     justify-content: left;
     
 }
-table{
+#my_table{
     width: 80%;
 
 }
@@ -95,4 +95,39 @@ padding-right:40px ;
     background-color: red;
     width: 120%;
 
+}
+#recu_contenu{
+    display: flex;
+    gap: 10px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items:center;    
+
+}
+.Recu{
+    
+    background-color:rgb(241, 241, 184);
+}
+.recu_head{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+.recu_contenu{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-items: center;
+}
+.recu_contenu table{
+margin: 0 auto;
+width: 80%;
+}
+
+@media print {
+    .Recu{
+        display: none;
+    }
+    
 }
